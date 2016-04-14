@@ -23,42 +23,48 @@ int main()
   prompt = DFL_PROMPT ;
   setup();
 
-  while ( (cmdline = next_cmd(prompt, stdin)) != NULL ){
-    if ( (arglist = splitline(cmdline)) != NULL  ){
-      // Edit his code: compared command from user to seee if he wanto get out. 
-      if(strcmp(arglist[0], "exit") == 0) {
-	if(arglist[1] == NULL) {
-		exit(0);
-	}
-	else {
-		nRetCode = atoi(arglist[1]);
-		exit(nRetCode);		
-	} 		
-      }//end of if
-     
-      //problem code...
-      if((strcmp(arglist[0], "cd") == 0)  )
-        {
-	  break;
-        }
-      else if( strncmp("cd", cmdStr, 2) == 0 )
-        {
-	  char *token = strtok(cmdStr, " ");
-	  token = strtok(NULL, " ");
+  while ( (cmdline = next_cmd(prompt, stdin)) != NULL )
+    {
+      if ((arglist = splitline(cmdline)) != NULL)
+	{
+	  // Edit his code: compared command from user to see if he wan to get out. 
+	  if(strcmp(arglist[0], "exit") == 0) 
+	    {
+	      if(arglist[1] == NULL) 
+		{
+		  exit(0);
+		}
+	      else 
+		{
+		  nRetCode = atoi(arglist[1]);
+		  exit(nRetCode);		
+		} 		
+	    }//end of if
+	  
+	  //problem code
+	  if((strcmp(arglist[0], "cd") == 0)  )
+	    {
+	      break;
+	    }
+	  else if( strncmp("cd", cmdline, 2) == 0 )
+	    {
+	      char *token = strtok(cmdline, " ");
+	      token = strtok(NULL, " ");
+	      
+	      chdir(token);
+	    }
+	  else
+	    {
+	      system(cmdline);
+	    }
+	  //end of problem code
 
-	  chdir(token);
-        }
-      else
-        {
-	  system(cmdStr);
-        }
-      //end of problem code...
-      result = execute(arglist);
-      freelist(arglist);
-  
-    free(cmdline);
-  }//end of while
-  return 0;
+	  result = execute(arglist);
+	  freelist(arglist);	  
+	  free(cmdline);
+	}//end of if
+    }//end of while
+    return 0;
 }//end of main
 
 void setup()
@@ -76,4 +82,5 @@ void fatal(char *s1, char *s2, int n)
   fprintf(stderr,"Error: %s,%s\n", s1, s2);
   exit(n);
 }
+
 
