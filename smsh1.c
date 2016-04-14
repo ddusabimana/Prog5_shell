@@ -36,7 +36,7 @@ int main()
 	} 		
       }//end of if
      
-      
+      //problem code...
       if((strcmp(arglist[0], "cd") == 0)  )
         {
 	  break;
@@ -52,7 +52,7 @@ int main()
         {
 	  system(cmdStr);
         }
-      
+      //end of problem code...
       result = execute(arglist);
       freelist(arglist);
   
