@@ -62,15 +62,15 @@ int main()
           else
             {
               system(cmdline);
-              return 0;
+	      // return 0;
             }
           //end of problem code
 
-          result = execute(arglist);
+	  // result = execute(arglist);
           freelist(arglist);
           free(cmdline);
         }//end of if
-        return 0;
+      // return 0;
     }
 }//end of main
 
