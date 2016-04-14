@@ -44,29 +44,28 @@ int main()
             }//end of if
 
           //problem code
-          if((strcmp(arglist[0], "cd") == 0)  )
+          
+          if( strcmp(arglist[0], "cd") == 0)
             {
-              break;
-            }
-          else if( strncmp("cd", cmdline, 2) == 0 )
-            {
-              char *token = strtok(cmdline, " ");
-              token = strtok(NULL, " ");
+	      //Change directory
+	      if(arglist[1] == NULL)
+		{
+		  //Change to home
+		  chdir(getenv("HOME"));
+		}
+	      else
+		{
+		  //Change to specified in argList[1]
+		  char *token = strtok(cmdline, " ");
+		  token = strtok(NULL, " ");
 
-              chdir(token);
-            }
-          else if (arglist[1] != NULL &&  strncmp(arglist[1], "..", 2))
-            {
-              system("cd ..");
-            }
-          else
-            {
-              system(cmdline);
-	      // return 0;
-            }
+		  chdir(token);
+		}
+	      continue;
+	    }
           //end of problem code
 
-	  // result = execute(arglist);
+	  result = execute(arglist);
           freelist(arglist);
           free(cmdline);
         }//end of if
