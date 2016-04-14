@@ -1,5 +1,7 @@
+
+
 #
-# makefile for smsh
+# makefile for mysh
 #
 CC=gcc
 CFLAGS=-g
