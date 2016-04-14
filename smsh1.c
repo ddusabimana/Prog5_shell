@@ -11,6 +11,7 @@
 #include <unistd.h>
 #include <signal.h>
 #include "smsh.h"
+#include <errno.h>
 
 #define DFL_PROMPT      "$$$"
 
@@ -58,8 +59,12 @@ int main()
 		  //Change to specified in argList[1]
 		  char *token = strtok(cmdline, " ");
 		  token = strtok(NULL, " ");
-
+		  
 		  chdir(token);
+		  if(errno != 0)
+		    {
+		      printf("Error changing directory : %s\n", strerror(errno));
+		    }
 		}
 	      continue;
 	    }
