@@ -11,7 +11,7 @@
 #include <signal.h>
 #include "smsh.h"
 
-#define	DFL_PROMPT	"$"
+#define	DFL_PROMPT	"$$$"
 
 int main()
 {
