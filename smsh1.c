@@ -1,3 +1,4 @@
+//By Daniel Dusabimana, Megan Anderson, and Samuel Capotosto
 /**  smsh1.c  small-shell version 1
  **             first really useful version after prompting shell
  **             this one parses the command line into strings
