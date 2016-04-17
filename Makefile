@@ -1,12 +1,8 @@
-
-
 #
 # makefile for mysh
 #
 CC=gcc
 CFLAGS=-g
 
-mysh: mysh.o splitline.o execute.o
-	$(CC) $(CFLAGS) -o mysh mysh.o splitline.o execute.o
-
-
+mysh: smsh1.c splitline.c builtins.c execute.c
+	gcc  smsh1.c splitline.c builtins.c execute.c -o mysh
