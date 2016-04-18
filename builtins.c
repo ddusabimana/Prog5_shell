@@ -40,16 +40,12 @@ int processbuiltincmds(char ** arglist)
 		nRetCode = 2;
 		if(arglist[1] == NULL) {
 			//printf("Specify a directory to change to.\n");
-			nRetCode = -1;
+		  chdir(getenv("HOME"));
+		  //	nRetCode = 2;
 		}
 		else {
-			if(strcmp(arglist[1], "~") == 0) { //.Go Home
-				chdir(getenv("HOME"));
-			}
-			else { //.Somewhere Else
-				chdir(arglist[1]);
-			}
-			if(errno != 0) { //.Catch Errors
+			chdir(arglist[1]);
+			if(errno < 0) { //.Catch Errors
 				printf("cd Error : %s\n", strerror(errno));
 				nRetCode = -2;
 			}
